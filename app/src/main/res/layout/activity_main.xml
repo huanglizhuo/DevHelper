@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="xyz.lizhuo.devhelper.MainActivity"
+    android:orientation="vertical"
+    >
+
+  <Button
+      android:id="@+id/adbWifiEnable"
+      android:text="开启 wifi 调试"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
+  <Button
+      android:id="@+id/adbWifiDisable"
+      android:text="关闭 wifi 调试"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
+  <Button
+      android:id="@+id/debugLayoutEnable"
+      android:text="DebugLayout enable"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
+  <Button
+      android:id="@+id/debugLayoutDisable"
+      android:text="DebugLayout disable"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
+  <Button
+      android:id="@+id/showGPUBarEnable"
+      android:text="开启玄学曲线"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
+  <Button
+      android:id="@+id/showGPUBarDisable"
+      android:text="关闭玄学曲线"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
+  <Button
+      android:id="@+id/setNoClose"
+      android:text="屏幕常亮"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
+  <Button
+      android:id="@+id/nonal"
+      android:text="屏幕短亮"
+      android:layout_below="@+id/setNoClose"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
+</LinearLayout>
