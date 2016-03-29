@@ -1,2 +1,2 @@
 # DevHelper
-a tool fo android developer
+a tool for android developer
