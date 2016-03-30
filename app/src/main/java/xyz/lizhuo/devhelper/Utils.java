@@ -18,7 +18,17 @@ import java.io.InputStreamReader;
  */
 public class Utils {
 
-  public static String  getIpAddress(Context context){
+  private volatile static  Process process=null;
+
+  public Utils(){
+    try {
+      process = Runtime.getRuntime().exec("su\n");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public  String  getIpAddress(Context context){
     int ipAddress=0;
     WifiManager wifiManager = (WifiManager) context.getSystemService(android.content.Context.WIFI_SERVICE );
     WifiInfo wifiInfo = wifiManager.getConnectionInfo();
@@ -29,38 +39,41 @@ public class Utils {
         ( ipAddress >> 24 & 0xFF) ;
   }
 
-  public static void startWifiAdb(boolean enable){
+  public  void startWifiAdb(boolean enable){
     execShell(new String[]{"setprop service.adb.tcp.port "+(enable? "5555":"-1 \n" ),"stop adbd\n","start adbd\n"});
   }
 
-  public static void setDebugLayout(boolean show){
+  public  void setDebugLayout(boolean show){
     execShell(new String[]{"setprop debug.layout "+(show ? "true ":"false")+ "\n"});
   }
 
-  public static void setOverDraw(boolean show){
+  public  void setOverDraw(boolean show){
     execShell(new String[]{"setprop debug.hwui.overdraw"+(show ? "show ":"false")+ "\n"});
   }
 
-  public static void setGPULineBar(boolean show){
+
+
+  public  void setGPULineBar(boolean show){
       execShell(new String[] { "setprop debug.hwui.profile "+(show ? "visual_bars ":"false")+ "\n"});
   }
 
-  public static void execShell(String[] commands) {
-    Process process = null;
+  private void execShell(String[] commands) {
+    //Process process = null;
     try {
-      process = Runtime.getRuntime().exec("su");
+      //process = Runtime.getRuntime().exec("su\n");
+
       DataOutputStream os = new DataOutputStream(process.getOutputStream());
       for (String command : commands) {
-        if (command == null) {
-          continue;
-        }
+          if (command == null) {
+            continue;
+          }
         os.write(command.getBytes());
         os.writeBytes("\n");
       }
-      os.writeBytes("exit\n");
+      //os.writeBytes("exit\n");
       os.flush();
       os.close();
-      process.destroy();
+      //process.destroy();
     } catch (IOException e) {
       e.printStackTrace();
     }
